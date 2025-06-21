@@ -1,0 +1,285 @@
+---
+import Image from "astro/components/Image.astro"
+import Betcraft from '../assets/Betcraft.jpeg';
+---
+
+<section
+  id="portfolio"
+  class="relative bg-black py-12 md:py-16 overflow-hidden"
+>
+  <!-- Contenedor principal -->
+  <div class="max-w-5xl mx-auto px-5">
+    <!-- Título de sección -->
+    <h2
+      class="text-center text-2xl md:text-3xl font-light text-white uppercase tracking-wider mb-8 md:mb-12 opacity-0 portfolio-title"
+    >
+      Trabajos Destacados
+    </h2>
+
+    <!-- Grid de proyectos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      
+      <!-- Proyecto 1 -->
+<a
+  href="https://betcraft.online/"
+  class="portfolio-item opacity-0 transform translate-y-8 block"
+>
+  <div
+    class="relative group overflow-hidden border border-gray-800 rounded-lg h-64 transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-blue-500/10"
+  >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+    >
+    </div>
+    <!-- Contenedor para el efecto de desplazamiento vertical -->
+    <div class="absolute inset-0 overflow-hidden h-full">
+      <Image
+        src={Betcraft}
+        alt="Landing pages para Betcraft"
+        class="w-full h-auto object-cover transition-all duration-500 group-hover:scale-105"
+        style="animation: scrollDown 15s linear infinite; min-height: 150%;"
+      />
+    </div>
+    <!-- Resto del código permanece igual -->
+    <div
+      class="absolute top-4 right-4 z-20 bg-black/50 rounded-full p-2 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:bg-black/70"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+        ></path>
+      </svg>
+    </div>
+    <div
+      class="absolute bottom-0 left-0 p-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+    >
+      <h3 class="text-lg font-light text-white mb-1">Betcraft</h3>
+      <p
+        class="text-gray-300 text-xs opacity-80 group-hover:opacity-100 transition-opacity"
+      >
+        Landing page
+      </p>
+    </div>
+  </div>
+</a>
+
+      <!-- Proyecto 2 -->
+      <a
+        href="https://ejemplo.com/proyecto2"
+        class="portfolio-item opacity-0 transform translate-y-8 block"
+      >
+        <div
+          class="relative group overflow-hidden border border-gray-800 rounded-lg h-64 transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-purple-500/10"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+          >
+          </div>
+          <img
+            src="https://source.unsplash.com/random/600x400/?app,1"
+            alt="Proyecto 2"
+            class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+          />
+          <!-- Icono de enlace -->
+          <div
+            class="absolute top-4 right-4 z-20 bg-black/50 rounded-full p-2 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:bg-black/70"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </div>
+          <div
+            class="absolute bottom-0 left-0 p-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+          >
+            <h3 class="text-lg font-light text-white mb-1">Próximamente</h3>
+            <p
+              class="text-gray-300 text-xs opacity-80 group-hover:opacity-100 transition-opacity"
+            >
+              Landing page
+            </p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Proyecto 3 -->
+      <a
+        href="https://ejemplo.com/proyecto3"
+        class="portfolio-item opacity-0 transform translate-y-8 block"
+      >
+        <div
+          class="relative group overflow-hidden border border-gray-800 rounded-lg h-64 transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:shadow-cyan-500/10"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+          >
+          </div>
+          <img
+            src="https://source.unsplash.com/random/600x400/?dashboard,1"
+            alt="Proyecto 3"
+            class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+          />
+          <!-- Icono de enlace -->
+          <div
+            class="absolute top-4 right-4 z-20 bg-black/50 rounded-full p-2 backdrop-blur-sm border border-white/20 transition-all duration-300 group-hover:bg-black/70"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              ></path>
+            </svg>
+          </div>
+          <div
+            class="absolute bottom-0 left-0 p-4 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+          >
+            <h3 class="text-lg font-light text-white mb-1">Próximamente</h3>
+            <p
+              class="text-gray-300 text-xs opacity-80 group-hover:opacity-100 transition-opacity"
+            >
+              Landing page
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Espacio reservado para futuros proyectos -->
+    <div class="mt-8 text-center opacity-0 more-projects">
+      <p class="text-gray-400 text-sm">Más proyectos en desarrollo...</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const portfolioSection = document.getElementById("portfolio");
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+    const portfolioTitle = document.querySelector(".portfolio-title");
+    const moreProjects = document.querySelector(".more-projects");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (!prefersReducedMotion) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Animación del título
+              gsap.to(portfolioTitle, {
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out",
+              });
+
+              // Animación de las cards
+              gsap.to(portfolioItems, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.08,
+                ease: "power2.out",
+                delay: 0.2,
+              });
+
+              // Animación del texto inferior
+              gsap.to(moreProjects, {
+                opacity: 1,
+                duration: 0.8,
+                delay: 0.6,
+                ease: "power2.out",
+              });
+            } else {
+              gsap.set([portfolioTitle, ...portfolioItems, moreProjects], {
+                opacity: 0,
+                y: 8,
+              });
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      observer.observe(portfolioSection);
+    } else {
+      gsap.set([portfolioTitle, ...portfolioItems, moreProjects], {
+        opacity: 1,
+        y: 0,
+      });
+    }
+  });
+</script>
+
+<style>
+  .portfolio-item {
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  /* Mejoras en el hover */
+  .group:hover .absolute.inset-0 {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+  }
+
+  /* Efecto de cursor pointer en hover */
+  .portfolio-item:hover {
+    cursor: pointer;
+  }
+
+  /* Animación de desplazamiento vertical lento */
+  @keyframes scrollDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(calc(-100% + 16rem)); /* Ajusta 16rem (256px) según la altura de tu contenedor h-64 */
+    }
+  }
+
+  /* Ajustes para móvil */
+  @media (max-width: 640px) {
+    #portfolio {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .portfolio-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .portfolio-item {
+      max-width: 100%;
+    }
+  }
+</style>

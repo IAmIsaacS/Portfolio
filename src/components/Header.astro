@@ -1,0 +1,199 @@
+<header
+  id="home"
+  class="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center"
+>
+  <!-- Cubo 3D -->
+  <div class="absolute w-full h-full perspective-1000" aria-hidden="true">
+    <div
+      id="cube"
+      class="absolute top-1/2 left-1/2 w-[200px] h-[200px] md:w-[300px] md:h-[300px] transform -translate-x-1/2 -translate-y-1/2 preserve-3d"
+    >
+      <!-- Caras del cubo -->
+      <div
+        class="absolute inset-0 border border-white/80 transform-style-preserve-3d"
+        style="transform: rotateY(0deg) translateZ(100px)"
+      >
+      </div>
+      <div
+        class="absolute inset-0 border border-white/80 transform-style-preserve-3d"
+        style="transform: rotateY(90deg) translateZ(100px)"
+      >
+      </div>
+      <div
+        class="absolute inset-0 border border-white/80 transform-style-preserve-3d"
+        style="transform: rotateY(180deg) translateZ(100px)"
+      >
+      </div>
+      <div
+        class="absolute inset-0 border border-white/80 transform-style-preserve-3d"
+        style="transform: rotateY(-90deg) translateZ(100px)"
+      >
+      </div>
+      <div
+        class="absolute inset-0 border border-white/80 transform-style-preserve-3d"
+        style="transform: rotateX(90deg) translateZ(100px)"
+      >
+      </div>
+      <div
+        class="absolute inset-0 border border-white/80 transform-style-preserve-3d"
+        style="transform: rotateX(-90deg) translateZ(100px)"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido de texto -->
+  <div class="relative z-10 text-center px-8">
+    <h1
+      id="title"
+      class="text-4xl md:text-6xl font-light text-white uppercase tracking-wider mb-4 opacity-0"
+    >
+      ISAAC SALAZAR
+    </h1>
+    <p
+      id="subtitle"
+      class="text-lg md:text-xl font-light text-white/80 uppercase tracking-wider opacity-0"
+    >
+      • DESARROLLADOR WEB •
+    </p>
+  </div>
+</header>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const cube = document.getElementById("cube");
+    const title = document.getElementById("title");
+    const subtitle = document.getElementById("subtitle");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    // Configuración de animación
+    let autoRotationY = 0;
+    let autoRotationX = 0.1;
+    const rotationSpeed = isMobile ? 0.5 : 0.2;
+
+    // Animación principal
+    if (!prefersReducedMotion) {
+      if (isMobile) {
+        // Comportamiento más activo y aleatorio para móviles
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let targetRotationZ = 0;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
+        let currentRotationZ = 0;
+        const smoothFactor = 0.08; // Más rápido para cambios más bruscos
+
+        const updateRandomTarget = () => {
+          targetRotationY = (Math.random() - 0.5) * 360; // Rango más amplio (360 grados)
+          targetRotationX = (Math.random() - 0.5) * 360;
+          targetRotationZ = (Math.random() - 0.5) * 180;
+          setTimeout(updateRandomTarget, 1000 + Math.random() * 2000); // Cambio más frecuente (1-3 segundos)
+        };
+
+        updateRandomTarget();
+
+        gsap.ticker.add(() => {
+          currentRotationX +=
+            (targetRotationX - currentRotationX) * smoothFactor;
+          currentRotationY +=
+            (targetRotationY - currentRotationY) * smoothFactor;
+          currentRotationZ +=
+            (targetRotationZ - currentRotationZ) * smoothFactor;
+
+          gsap.set(cube, {
+            rotationY: currentRotationY,
+            rotationX: currentRotationX,
+            rotationZ: currentRotationZ,
+            transformStyle: "preserve-3d",
+          });
+        });
+      } else {
+        // Comportamiento original para desktop
+        gsap.ticker.add(() => {
+          autoRotationY += rotationSpeed;
+          gsap.set(cube, {
+            rotationY: autoRotationY,
+            rotationX: autoRotationX,
+            transformStyle: "preserve-3d",
+          });
+        });
+
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
+        const smoothFactor = 0.05;
+
+        window.addEventListener("mousemove", (e) => {
+          targetRotationY = (e.clientX / window.innerWidth - 0.5) * 60;
+          targetRotationX = (e.clientY / window.innerHeight - 0.5) * -60;
+        });
+
+        gsap.ticker.add(() => {
+          currentRotationX +=
+            (targetRotationX - currentRotationX) * smoothFactor;
+          currentRotationY +=
+            (targetRotationY - currentRotationY) * smoothFactor;
+
+          gsap.set(cube, {
+            rotationY: currentRotationY,
+            rotationX: currentRotationX,
+            transformStyle: "preserve-3d",
+          });
+
+          autoRotationY = currentRotationY;
+          autoRotationX = currentRotationX;
+        });
+      }
+    }
+
+    // Animación de texto
+    gsap.to([title, subtitle], {
+      duration: 1.5,
+      y: 0,
+      opacity: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+
+    // Ajuste responsivo
+    function updateCube() {
+      const size =
+        Math.min(window.innerWidth, window.innerHeight) *
+        (isMobile ? 0.35 : 0.25);
+      const translateZ = size / 2;
+
+      cube.style.width = `${size}px`;
+      cube.style.height = `${size}px`;
+
+      document
+        .querySelectorAll(".transform-style-preserve-3d")
+        .forEach((face) => {
+          face.style.transform = face.style.transform.replace(
+            /translateZ\(.*?px\)/,
+            `translateZ(${translateZ}px)`
+          );
+        });
+    }
+
+    window.addEventListener("resize", updateCube);
+    updateCube();
+  });
+</script>
+
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+</style>

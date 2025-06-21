@@ -1,0 +1,87 @@
+<section
+  id="about"
+  class="border-t border-gray-800 bg-black text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+>
+  <div class="max-w-3xl mx-auto">
+    <!-- Contenido unificado (sin imagen) -->
+    <div class="text-center lg:text-left">
+      <h2
+        class="text-center text-2xl md:text-3xl font-light text-white uppercase tracking-wider mb-8 md:mb-12 opacity-0 about-item"
+      >
+        Sobre mí
+      </h2>
+
+      <div class="space-y-4 text-center text-gray-300">
+        <p class="text-base md:text-lg leading-relaxed about-item">
+          Soy desarrollador web y me apasiona crear sitios que sean funcionales,
+          atractivos y fáciles de usar. Disfruto transformar ideas en
+          experiencias digitales que conecten con las personas.
+        </p>
+        <p class="text-base md:text-lg leading-relaxed about-item">
+          Me motiva enfrentar nuevos desafíos y aprender constantemente para
+          mejorar en mi trabajo. Presto mucha atención a los detalles para que
+          cada proyecto sea único y cumpla con las expectativas.
+        </p>
+        <p class="text-base md:text-lg leading-relaxed about-item">
+          Cuando no estoy frente a la pantalla, disfruto mucho viendo anime y
+          jugando videojuegos, actividades que me apasionan y nutren mi
+          creatividad.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const aboutSection = document.getElementById("about");
+    const aboutItems = document.querySelectorAll(".about-item");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (!prefersReducedMotion) {
+      // Función para resetear y animar los elementos
+      const animateItems = () => {
+        // Resetear las propiedades antes de cada animación
+        gsap.set(aboutItems, { opacity: 0, y: 20 });
+
+        // Aplicar la animación
+        gsap.to(aboutItems, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+          delay: 0.1,
+        });
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateItems();
+            }
+          });
+        },
+        {
+          threshold: 0.05,
+          // Opcional: puedes agregar un margen negativo para que se active antes
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      observer.observe(aboutSection);
+
+      // Opcional: Animar también al cargar la página si ya está visible
+      if (window.scrollY + window.innerHeight > aboutSection.offsetTop) {
+        animateItems();
+      }
+    } else {
+      gsap.set(aboutItems, { opacity: 1, y: 0 });
+    }
+  });
+</script>

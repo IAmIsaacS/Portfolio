@@ -1,0 +1,294 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/myAvatar.png";
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 w-full h-14 z-50">
+  <!-- Fondo borroso con transparencia -->
+  <div
+    class="absolute inset-0 bg-black/30 backdrop-blur-md border-b border-white/10"
+  >
+  </div>
+
+  <div
+    class="relative max-w-screen-xl mx-auto flex items-center justify-between h-full px-6"
+  >
+    <!-- Logo -->
+    <div class="flex items-center z-10">
+      <Image
+        src={logo}
+        alt="logo"
+        class="w-10 h-10 object-cover rounded-full hover:brightness-125 hover:shadow-glow"
+        id="logo-img"
+        width={40}
+        height={40}
+      />
+    </div>
+
+    <!-- Botón de menú móvil -->
+    <button
+      id="menu-toggle"
+      class="lg:hidden text-gray-300 focus:outline-none z-10"
+    >
+      <div class="space-y-1.5 w-6">
+        <span class="block h-0.5 w-full bg-current" id="bar1"></span>
+        <span class="block h-0.5 w-full bg-current" id="bar2"></span>
+        <span class="block h-0.5 w-full bg-current" id="bar3"></span>
+      </div>
+    </button>
+
+    <!-- Menú desktop -->
+    <ul id="nav-links" class="hidden lg:flex space-x-1 h-full z-10">
+      <li class="h-full">
+        <a
+          href="#home"
+          class="h-full flex items-center px-5 text-gray-300 font-light uppercase text-sm tracking-wider hover:text-white relative group"
+        >
+          <span>Inicio</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+      </li>
+      <li class="h-full">
+        <a
+          href="#about"
+          class="h-full flex items-center px-5 text-gray-300 font-light uppercase text-sm tracking-wider hover:text-white relative group"
+        >
+          <span>Sobre Mí</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+      </li>
+      <li class="h-full">
+        <a
+          href="#portfolio"
+          class="h-full flex items-center px-5 text-gray-300 font-light uppercase text-sm tracking-wider hover:text-white relative group"
+        >
+          <span>Trabajos</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+      </li>
+      <li class="h-full">
+        <a
+          href="#contact"
+          class="h-full flex items-center px-5 text-gray-300 font-light uppercase text-sm tracking-wider hover:text-white relative group"
+        >
+          <span>Contacto</span>
+          <span
+            class="absolute bottom-0 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"
+          ></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Menú móvil -->
+<div
+  id="mobile-menu"
+  class="lg:hidden hidden fixed inset-0 pt-14 bg-black/80 backdrop-blur-lg z-40 overflow-y-auto"
+>
+  <ul
+    class="min-h-full flex flex-col items-center justify-center space-y-8 py-10"
+  >
+    <li>
+      <a
+        href="#home"
+        class="mobile-link text-3xl font-light text-white hover:text-opacity-80 flex items-center py-3"
+      >
+        <span class="mr-3 text-white">—</span>
+        Inicio
+      </a>
+    </li>
+    <li>
+      <a
+        href="#about"
+        class="mobile-link text-3xl font-light text-white hover:text-opacity-80 flex items-center py-3"
+      >
+        <span class="mr-3 text-white">—</span>
+        Sobre Mí
+      </a>
+    </li>
+    <li>
+      <a
+        href="#portfolio"
+        class="mobile-link text-3xl font-light text-white hover:text-opacity-80 flex items-center py-3"
+      >
+        <span class="mr-3 text-white">—</span>
+        Trabajos
+      </a>
+    </li>
+    <li>
+      <a
+        href="#contact"
+        class="mobile-link text-3xl font-light text-white hover:text-opacity-80 flex items-center py-3"
+      >
+        <span class="mr-3 text-white">—</span>
+        Contacto
+      </a>
+    </li>
+  </ul>
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const bars = [
+      document.getElementById("bar1"),
+      document.getElementById("bar2"),
+      document.getElementById("bar3"),
+    ];
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    const menuItems = document.querySelectorAll("#mobile-menu li");
+    const menuDashes = document.querySelectorAll(".mobile-link span");
+
+    let menuOpen = false;
+    let menuTL = gsap.timeline({ paused: true });
+
+    // Animación de apertura del menú
+    menuTL
+      .to(mobileMenu, {
+        autoAlpha: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      })
+      .fromTo(
+        menuItems,
+        {
+          x: -30,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.4,
+          ease: "back.out(1.2)",
+        },
+        0.2
+      )
+      .to(
+        bars[0],
+        {
+          y: 6,
+          rotate: 45,
+          duration: 0.3,
+        },
+        0
+      )
+      .to(
+        bars[1],
+        {
+          opacity: 0,
+          duration: 0.2,
+        },
+        0
+      )
+      .to(
+        bars[2],
+        {
+          y: -6,
+          rotate: -45,
+          duration: 0.3,
+        },
+        0
+      );
+
+    // Animación de hover para los enlaces móviles
+    mobileLinks.forEach((link) => {
+      const dash = link.querySelector("span");
+
+      link.addEventListener("mouseenter", () => {
+        gsap.to(dash, {
+          x: 0,
+          opacity: 1,
+          duration: 0.3,
+        });
+        gsap.to(link, {
+          x: 8,
+          duration: 0.3,
+        });
+      });
+
+      link.addEventListener("mouseleave", () => {
+        gsap.to(dash, {
+          x: -10,
+          opacity: 0,
+          duration: 0.3,
+        });
+        gsap.to(link, {
+          x: 0,
+          duration: 0.3,
+        });
+      });
+    });
+
+    // Control del menú
+    menuToggle.addEventListener("click", () => {
+      menuOpen = !menuOpen;
+
+      if (menuOpen) {
+        document.body.style.overflow = "hidden";
+        mobileMenu.classList.remove("hidden");
+        menuTL.play();
+      } else {
+        document.body.style.overflow = "";
+        menuTL.reverse().then(() => {
+          mobileMenu.classList.add("hidden");
+        });
+      }
+    });
+
+    // Cerrar menú al hacer clic en enlace
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth < 1024) {
+          menuOpen = false;
+          document.body.style.overflow = "";
+          menuTL.reverse().then(() => {
+            mobileMenu.classList.add("hidden");
+          });
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Efecto glow para el logo */
+  .hover\:shadow-glow:hover {
+    filter: brightness(110%) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  }
+
+  /* Transición suave para el logo */
+  #logo-img {
+    transition: filter 0.3s ease;
+  }
+
+  /* Estilo base para las barras del menú hamburguesa */
+  #menu-toggle span {
+    transform-origin: center;
+    transition: all 0.2s ease;
+  }
+
+  /* Asegurar que los spans sean visibles inicialmente */
+  .mobile-link span {
+    opacity: 1;
+    color: white;
+  }
+
+  /* Efecto de fondo borroso sutil para el nav */
+  #navbar {
+    background: transparent;
+  }
+  #navbar > div:first-child {
+    transition: backdrop-filter 0.3s ease;
+  }
+</style>

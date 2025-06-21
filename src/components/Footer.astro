@@ -1,0 +1,33 @@
+---
+import Image from "astro/components/Image.astro";
+import logo from "../assets/myAvatar.png";
+---
+
+<footer class="bg-black text-gray-400 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Contenido principal -->
+    <div class="py-12">
+      <div class="flex flex-col md:flex-row justify-between items-start">
+        <!-- Logo y descripción -->
+        <div class="mb-8 md:mb-0">
+          <div class="flex items-center mb-4">
+            <Image src={logo} alt="Logo" class="h-8 w-auto" />
+            <span class="ml-2 text-xl font-light text-white">Isaac Salazar</span
+            >
+          </div>
+          <p class="flex flex-col text-sm leading-relaxed max-w-md">
+            Pon en manos del Señor todas tus obras, y tus proyectos se
+            cumplirán. <span>Proverbios 16:3</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de autor -->
+    <div class="py-6 border-t border-gray-800">
+      <p class="text-sm text-center">
+        &copy; 2025 Isaac Salazar. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>
