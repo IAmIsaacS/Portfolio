@@ -1,48 +1,29 @@
-# Astro Starter Kit: Basics
+Portafolio de Desarrollo Web de Isaac S.
 
-```sh
-npm create astro@latest -- --template basics
-```
+Bienvenido a mi portafolio personal, donde presento mis proyectos y habilidades en desarrollo web moderno, con un enfoque en rendimiento, SEO y experiencia de usuario.
+Sobre el Proyecto
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Este portafolio está construido con Astro, un framework moderno que optimiza la velocidad y el SEO mediante la generación de sitios estáticos altamente eficientes. Utilizo TypeScript para un código más seguro y mantenible, y Tailwind CSS para un diseño responsivo, limpio y adaptable a dispositivos móviles y escritorio.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El sitio está desplegado en Netlify, lo que garantiza una entrega rápida gracias a su red global de CDN y despliegue continuo automático desde GitHub.
+Tecnologías utilizadas
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+    Astro: Para construir un sitio web modular, rápido y optimizado para SEO.
 
-## 🚀 Project Structure
+    TypeScript: Para mejorar la calidad y robustez del código.
 
-Inside of your Astro project, you'll see the following folders and files:
+    Tailwind CSS: Para el diseño responsivo y estilizado con utilidades CSS.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+    Netlify: Plataforma de despliegue que ofrece hosting estático, funciones serverless y CI/CD automático.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Características destacadas
 
-## 🧞 Commands
+    Arquitectura estática con generación previa para máxima velocidad y seguridad.
 
-All commands are run from the root of the project, from a terminal:
+    Diseño responsivo que se adapta perfectamente a cualquier tamaño de pantalla.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+    Optimización SEO con meta etiquetas, sitemap y estructura semántica.
 
-## 👀 Want to learn more?
+    Despliegue continuo automático con Netlify, integrando previews para revisión rápida.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+    Uso de funciones serverless en Netlify para funcionalidades backend ligeras cuando es necesario.
